@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talaba qo'shish</title>
+</head>
+<body>
+<h1>Yangi talaba qo'shish</h1>
+<hr>
+<form method="post">
+    {%  csrf_token  %}
+    <label>Ism:</label><input type="text" name="ism" required><br><br>
+    <label>Gurux:</label><input type="text" name="gurux" required><br><br>
+    <select name="kurs">
+        <option value="1">1-kurs</option>
+        <option value="2">2-kurs</option>
+        <option value="3">3-kurs</option>
+        <option value="4">4-kurs</option>
+    </select><br><br>
+    <label>Kitoblar soni:</label><input type="number" name="kitoblar_soni" ><br><br>
+<a href="/talabalar/" ><button type="button">Chiqish</button></a>
+<button>Saqlash</button>
+</form>
+
+</body>
+</html>

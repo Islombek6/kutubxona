@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bosh sahifa</title>
+        {% load static %}
+
+<style>
+html , body {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Balandlikni to'liq ekranga sozlash */
+        }
+body {
+            background-image: url('{% static 'images/rasm.jpg' %}'); /* Rasmingiz yo'lini kiriting */
+            background-size: cover; /* Rasmni sahifaga sig‘dirish */
+            background-repeat: no-repeat; /* Rasmni takrorlamaslik */
+            background-position: center; /* Rasmni markazda joylash */
+        }
+
+ h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 5vh; /* Ekran balandligining 5% */
+            margin: 10px;
+            padding: 20px 40px;
+            font-size: 33px;
+            font-family: system-ui;
+            color: #FF9933; /* Matn rangi */
+            background-color: rgb(41, 91, 184, 0.8); /* Fon rangi */
+            text-decoration: none;
+            border-radius: 50px; /* Yumaloq burchaklar */
+            border: 5px solid rgb(255, 255, 255, 0.5);
+            box-shadow: 0 0 45px rgb(255, 255, 255, 1)
+        }
+  .button {
+    display: inline-block;
+    padding: 80px 70px;
+    font-size: 30px;
+    font-family: "Times New Roman",  Monospace;
+    color: rgb(255, 255, 255,0.8);
+    background-color: rgb(255, 0, 0, 0.4);
+    border: 5px solid rgb(255, 0, 0, 1);
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 0 55px rgb(0, 0, 205, 1);
+
+    cursor: pointer;
+    transition: all 0.6s ease;
+  }
+  .button:hover {
+    background-color: rgb(255, 0, 50, 0.7);
+    font-size: 30px;
+    color: rgb(0, 0, 0,0.8);
+    box-shadow: 0 0 75px rgb(255, 30, 255, 1);
+  }
+
+
+ p {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family:cursive;
+    color: white;
+    background-color: rgb(56, 110, 111, 0.8);
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 45px rgb(255, 204, 0, 1)
+
+    }
+
+
+</style>
+</head>
+<body>
+
+    <h1>Kutubxona boshqaruv tizimi</h1>
+    <br>
+    <p>Sana: = {{today}}</p>
+    <hr>
+
+    <a href="/talabalar/" class="button">Talabalar</a>
+    <a href="/mualliflar/" class="button">Mualliflar</a>
+    <a href="/kitoblar/" class="button">Kitoblar</a>
+    <a href="/recordlar/" class="button">Recordlar</a>
+    <a href="/kutubxonachilar/" class="button">Kutubxonachilar</a>
+
+</body>
+</html>

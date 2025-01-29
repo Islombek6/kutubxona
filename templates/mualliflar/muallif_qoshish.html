@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Muallif qo'shish</title>
+</head>
+<body>
+<h1>Yangi muallif qo'shish</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <label>Ism:</label><input type="text" name="ism" required><br><br>
+    <select name="jins">
+        <option value="Erkak">Erkak</option>
+        <option value="Ayol">Ayol</option>
+    </select>
+    <br><br>
+    <label>Tug'ilgan sana:</label><input type="date" name="t_sana" required><br><br>
+    <label>Kitob soni:</label><input type="number" name="kitob_soni"><br><br>
+    <label>Tirik:</label><input type="checkbox" name="tirik"><br><br>
+    <a href="/mualliflar/">
+        <button type="button">Chiqish</button>
+    </a>
+    <button>Saqlash</button>
+</form>
+</body>
+</html>

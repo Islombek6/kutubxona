@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Malumot taxrirlash</title>
+</head>
+<body>
+<h1>Ma'lumotlarni taxrirlash </h1>
+<hr>
+<form method="post">
+     {% csrf_token%}
+    <br><br>
+        <label>Ism:</label>
+        <input type="text" name="ism" value="{{ talaba.ism }}">
+    <br><br>
+        <label>Gurux:</label>
+        <input type="text" name="gurux" value="{{ talaba.gurux }}" >
+    <br><br>
+        <label>Kurs:</label>
+        <select name="kurs">
+            <option value="{{ talaba.kurs }}">{{talaba.kurs }}-kurs</option>
+            <option value="1">1-kurs</option>
+            <option value="2">2-kurs</option>
+            <option value="3">3-kurs</option>
+            <option value="4">4-kurs</option>
+        </select>
+    <br><br>
+        <label>Kitob soni:</label>
+        <input type="number" name="kitoblar_soni" value="{{ talaba.kitoblar_soni }}" >
+    <br><br>
+    <a href="/talabalar/"><button type="button">Bekor qilish</button></a>
+    <button type="submit">Saqlash</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record update</title>
+</head>
+<body>
+<h1>Ma'lumotlarni taxrirlash </h1>
+<hr>
+<form method="post">
+     {% csrf_token%}
+     <label for="student">Student</label>
+     <select name="student_id" id="student">
+         <option value="{{ record.student.id}}">{{record.student.ism}}</option>
+         {%for student in studentlar %}
+         {%if student != record.student%}
+         <option value="{{student.id}}">{{student.ism}}</option>
+         {%endif%}
+         {%endfor%}
+
+     </select>
+     <br><br>
+     <label for="kitob">Kitob</label>
+     <select name="kitob_id" id="kitob">
+         <option value="{{ record.kitob.id}}">{{record.kitob.nom}}</option>
+         {%for kitob in kitoblar %}
+         {%if kitob != record.kitob%}
+         <option value="{{kitob.id}}">{{kitob.nom}}</option>
+         {%endif%}
+         {%endfor%}
+
+     </select>
+     <br><br>
+     <label for="kutubxonachi">Kutubxonachi</label>
+     <select name="kutubxonachi_id" id="kutubxonachi">
+         <option value="{{ record.kutubxonachi.id}}">{{record.kutubxonachi.ism}}</option>
+         {%for kutubxonachi in kutubxonachilar %}
+         {%if kutubxonachi != record.kutubxonachi%}
+         <option value="{{kutubxonachi.id}}">{{kutubxonachi.ism}}</option>
+         {%endif%}
+         {%endfor%}
+     </select>
+    <br><br>
+        <label for="olingan_sana">Olingan sana:</label>
+        <input type="datetime-local" name="olingan_sana" value="{{record.olingan_sana|date:'Y-m-d H:i:s'}}" id="olingan_sana">
+    <br><br>
+        <label for="qaytargan_sana">Qaytarilgan sana:</label>
+        <input type="datetime-local" name="qaytargan_sana" value="{{record.qaytargan_sana|date:'Y-m-d H:i:s'}}" id="qaytargan_sana">
+    <br><br>
+        <label for ="qaytardi"> Qaytardi </label>
+        <input type="checkbox" name="qaytardi" {% if record.qaytardi == True %} checked {% endif %} id="qaytardi">
+    <br><br>
+        <a href="{% url 'recordlar' %}"><button type="button">Bekor qilish </button></a>
+        <button type="submit">tasdiqlash</button>
+</form>
+</body>
+</html>

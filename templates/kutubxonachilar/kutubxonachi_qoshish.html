@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kutubxonachi qo'shish</title>
+</head>
+<body>
+<h1>Yangi kutubxonachi qoshish</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <label>Ism:</label><input type="text" name="ism" required><br><br>
+    <label>Ish vaqti:</label>
+    <select name="ish_vaqt">
+        <option value="08:00 - 13:00">08:00 - 13:00</option>
+        <option value="13:00 - 18:00">13:00 - 18:00</option>
+        <option value="18:00 - 23:00">18:00 - 23:00</option>
+    </select>
+<br><br>
+    <button>Saqlash</button>
+</form>
+</body>
+</html>

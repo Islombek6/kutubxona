@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>muallif malunmotlarini taxrirlash</title>
+</head>
+<body>
+<h1>Ma'lumotlarni taxrirlash </h1>
+<hr>
+<form method="post">
+    {% csrf_token%}
+    <br><br>
+    <label>Ism:</label>
+    <input type="text" name="ism" value="{{ muallif.ism }}">
+    <br><br>
+    <label>Jins:</label>
+    <select name="jins">
+        <option value="{{ muallif.jins }}">{{muallif.jins }}</option>
+        <option value="Erkak">Erkak</option>
+        <option value="Ayol">Ayol</option>
+
+    </select>
+    <br><br>
+    <label>Kitob soni:</label>
+    <input type="number" name="kitob_soni" value="{{ muallif.kitob_soni }}">
+    <br><br>
+    <label>Tug'ilgan sanasi:</label>
+    <input type="date" name="t_sana" value="{{ muallif.t_sana|date:'Y-m-d' }}"><br><br>
+    <label>Tirikmi : </label>
+    <input type="checkbox" name="tirik" value="{{ muallif.tirik }}"><br><br>
+    <a href="/mualliflar/">
+        <button type="button">Bekor qilish</button>
+    </a>
+    <button type="submit">Saqlash</button>
+</form>
+</body>
+</html>

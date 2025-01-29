@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitob malumotlarini taxrirlash</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label for="nom">Nomi: </label><input type="text" name="nom" value="{{ kitob.nom}}" id="nom"><br><br>
+    <label for="Janr">Janri: </label><input type="text" name="Janr" value="{{ kitob.Janr}}" id="Janr"><br><br>
+    <label for="sahifa">Sahifa soni: </label><input type="number" name="sahifa" value="{{ kitob.sahifa}}" id="sahifa"><br><br>
+    <label for="muallif">Muallifi: </label><select name="muallif_id" id="muallif">
+        <option value="{{kitob.muallif.id}}">{{kitob.muallif.ism}}</option>
+        {% for muallif in mualliflar %}
+        {% if muallif != kitob.muallif %}
+        <option value="{{muallif.id}}">{{muallif.ism}}</option>
+        {% endif %}
+        {% endfor %}
+    </select><br><br>
+        <a href="{% url 'kitoblar' %}">
+            <button type="button">Bekor qilish</button>
+        </a>
+        <button type="submit">tasdiqlash</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kutubxonachi malumotlarini taxrirlash</title>
+</head>
+<body>
+<h1>Ma'lumotlarni taxrirlash </h1>
+<hr>
+<form method="post">
+     {% csrf_token%}
+    <br><br>
+        <label>Ism:</label>
+        <input type="text" name="ism" value="{{ kutubxonachi.ism }}">
+    <br><br>
+    <label>Ish vaqti:</label>
+        <select name="ish_vaqt">
+            <option value="{{ kutubxonachi.ish_vaqt }}">{{kutubxonachi.ish_vaqt }}</option>
+        <option value="08:00 - 13:00">08:00 - 13:00</option>
+        <option value="13:00 - 18:00">13:00 - 18:00</option>
+        <option value="18:00 - 23:00">18:00 - 23:00</option>
+        </select>
+<br><br>
+    <a href="/kutubxonachilar/"><button type="button">Bekor qilish</button></a>
+    <button type="submit">Saqlash</button>
+</form>
+</body>
+</html>

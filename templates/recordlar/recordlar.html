@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>recordlar</title>
+    {% load static %}
+    <style>
+        html , body {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Balandlikni to'liq ekranga sozlash */
+        }
+        body {
+            background-image: url('{% static 'images/rasm.jpg' %}'); /* Rasmingiz yo'lini kiriting */
+            background-size: cover; /* Rasmni sahifaga sig‘dirish */
+            background-repeat: repeat; /* Rasmni takrorlamaslik */
+            background-position: center; /* Rasmni markazda joylash */
+        }
+        h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 5vh; /* Ekran balandligining 5% */
+            margin: 10px;
+            padding: 20px 40px;
+            font-size: 33px;
+            font-family: system-ui;
+            box-shadow: 0 0 15px rgb(255, 255, 255, 1);
+            color: #FF9933; /* Matn rangi */
+            background-color: rgb(41, 91, 184, 0.8); /* Fon rangi */
+            text-decoration: none;
+            border-radius: 50px; /* Yumaloq burchaklar */
+            border: 5px solid rgb(255, 255, 255, 0.5);
+        }
+        .a{ display: inline-block;
+        padding: 15px 30px;
+        font-size: 15px;
+        font-family: system-ui;
+        margin: 10px;
+        color: #FF9933;
+        background-color: rgb(41, 91, 184, 0.8);
+        text-decoration: none;
+        box-shadow: 0 0 35px rgb(2, 5, 255, 1);
+        border-radius: 5px;
+        border: 5px solid rgb(255, 255, 255, 0.5);
+
+        cursor: pointer;
+        transition: all 1s ease;}
+     .a:hover {
+        background-color: #000B54;
+        box-shadow: 0 0 45px rgb(2, 5, 255, 1);}
+.p_teg {
+    display: flex; /* Flex konteynerni faollashtirish */
+    justify-content: space-between; /* Elementlarni chap va o'ng tomonga joylashtirish */
+    align-items: center; /* Elementlarni vertikal tekislash */
+    margin: 5px 0;
+    gap: 1 px; /* Elementlar orasida masofa */
+}
+
+.p_teg span {
+    margin-right: 15px; /* Raqamni matndan ajratish uchun */
+    background-color: rgba(255, 200, 100, 0.5);
+    color: BLACK;
+    padding: 15px ;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 24px;
+    box-shadow: 0 0 25px rgb(200, 200, 205, 1);
+
+
+
+}
+
+.p_teg .button.ism {
+    flex-grow: 1; /* Ismga bo'sh joyni egallashni buyuramiz */
+    text-align: left; /* Matnni chapga tekislash */
+    font-size: 20px;
+    background-color: rgb(255, 250, 50, 0.2);
+    padding: 8px ;
+    transition: background-color 1s ease;
+    box-shadow: 0 0 25px rgb(0, 200, 205, 1);
+}
+    .p_teg .button.ism:hover {
+    background-color: rgb(255, 255, 102,0.5);
+    box-shadow: 0 0 45px rgb(102, 0, 54, 1);
+}
+
+.delete-button {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+    padding: 5px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 26px;
+    cursor: pointer;
+    transition: background-color 0.7s ease;
+    box-shadow: 0 0 35px rgb(255, 0, 0, 1);
+}
+.update-button {
+    background-color: rgba(204, 204, 0, 0.5);
+    color: white;
+    padding: 5px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 26px;
+    cursor: pointer;
+    transition: background-color 0.7s ease;
+    box-shadow: 0 0 35px rgb(255, 255, 0, 1);
+    }
+.delete-button:hover {
+    background-color: rgb(102,0,0,0.7);
+    box-shadow: 0 0 75px rgb(255, 30, 255, 1);
+}
+.update-button:hover {
+    background-color: rgb(102,102,0,0.7);
+    box-shadow: 0 0 75px rgb(255, 30, 255, 1);}
+
+.input-container {
+      display:flex;
+      position: relative;
+      margin: 20px
+
+    }
+
+    .input-container input {
+
+      padding: 20px;
+      font-size: 15px;
+      border: 7px solid #ccc;
+      border-radius: 10px;
+      border-color: rgb(0, 0, 250);
+      background-color: rgb(200, 205, 255, 0.5);
+      outline: none;
+      box-shadow: 0 0 35px rgb(2, 5, 255, 1);
+      transition: border-color 0.5s, box-shadow 0.5s;
+    }
+
+    .input-container input:focus {
+      border-color: rgb(255, 0, 0) ;
+      box-shadow: 0 0 35px rgb(255, 0, 0, 1);
+
+
+    }
+
+    .input-container label {
+      position: absolute;
+      top: 40%;
+      left: 16px;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 50;
+      pointer-events: none;
+      transition: all 0.8s;
+    }
+
+    .input-container input:focus + label,
+    .input-container input:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 12px;
+      font-size: 20px;
+      color: #FFFFFF;
+      background-color: rgb(255, 0, 0, 0.2);
+      padding: 0 4px;
+    }
+.form-container {
+       display: flex; /* Flexboxni yoqamiz */
+       align-items: center; /* Vertikal tekislash */
+       gap: 20px; /* Formalar orasidagi masofa */
+       flex-wrap: wrap; /* Elementlar siqilmasligi uchun, kerak bo‘lsa yangi qatorda joylashadi */
+.inline-form {
+       display: flex; /* Formadagi elementlarni bir qatorda joylashtirish */
+       align-items: center; /* Elementlarni vertikal tekislash */
+       gap: 10px; /* Elementlar orasidagi masofa */
+}
+    .icon{
+            background-image: url('{% static "images/img_2-removebg-preview.png" %}');
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-color: rgb(41, 91, 100, 0.5);
+            background-size: contain; /* Rasmni mos kattalikka joylashtirish uchun */
+            width: 50px; /* Element kengligi */
+            height: 50px; /* Element balandligi */
+            display: inline-block; /* Rasmni blok qilib ko‘rsatish uchun */
+            margin: 10px;
+            font-size: 30px;
+            box-shadow: 0 0 45px rgb(255, 204, 0, 1);
+        }
+    .icon:hover{
+         box-shadow: 0 0 75px rgb(255, 30, 255, 1);
+         background-color: rgb(102, 102, 102, 0.7);
+         }
+        .icon2{
+            background-image: url('{% static "images/clipart1953477.png" %}');
+            font-size: 20px
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-color: rgb(41, 91, 100, 0.5);
+            background-size: contain;
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 0 45px rgb(255, 204, 0, 1);
+        }
+        .icon2:hover{
+         box-shadow: 0 0 75px rgb(255, 30, 255, 1);
+         background-color: rgb(102, 102, 102, 0.7);}
+    </style>
+</head>
+<body>
+ <h1>Recordlar ro'yxati</h1>
+ <a href="/record-qo'shish/" class="a">➕</a>
+ <a href="/home/" class="a">Bosh sahifa</a>
+<div class="form-container">
+    <form class="inline-form">
+        <div class="input-container">
+        <input type="text" name="search" placeholder="" id="search" >
+            <label for="search"> Record:</label>
+           <button class="icon"></button>
+    <a href="/recordlar/"><button class = "icon2"></button></a>
+</div>
+    </form>
+    </div>
+  {%for record in recordlar%}
+  <p class="p_teg">
+      <span>{{forloop.counter}}.</span>
+    <a href="/recordlar/{{ record.id  }}/" class="button ism">
+        <button class="button ism">{{record.student}}---------------------{{record.kitob}}</button>
+    </a>
+      <a href="/recordlar/{{record.id}}/update/"><button class="update-button">✍🏻</button></a>
+      <a href="/recordlar/{{ record.id}}/delete-confrim/"><button class="delete-button">🗑️</button></a>
+  </p>
+{%endfor%}
+</body>
+</html>
