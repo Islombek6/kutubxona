@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+from django.conf.global_settings import STATIC_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4b#m1t#6uqlwu%9r0_ivtp^#52340*70(oxitu*6n35f6*ho=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -128,11 +129,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
